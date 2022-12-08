@@ -28,7 +28,6 @@ public class AttributeSiblingMapperProvider {
                 Set<Integer> distinctClassSet = new HashSet<>();
 
                 for (AttributeSiblingQueryResult attributeSiblingQueryResult : attributeSiblingQueryResultList) {
-                    System.out.println(attributeSiblingQueryResult);
                     if (!attributeNameList.contains(attributeSiblingQueryResult.getAttributeName())) {
                         Integer currentCounter = occurenceMap.get(attributeSiblingQueryResult.getAttributeName());
                         SourcedPartialRecommendationItem partialItem = partialRecommendationItemMap.get(attributeSiblingQueryResult.getAttributeName());

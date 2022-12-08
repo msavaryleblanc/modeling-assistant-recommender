@@ -59,8 +59,6 @@ public class RelationContextMapperProvider {
                     currentContext += relationContextQueryResult.getMaxCtx();
                     ctxMap.replace(relationContextQueryResult.getClassName(), currentContext);
 
-                    System.out.println(relationContextQueryResult);
-                    System.out.println(relationContextQueryResult.getSources());
                     List<String> sources = new ArrayList<>(relationContextQueryResult.getSources());
                     sources.sort(Comparator.naturalOrder());
 
@@ -92,7 +90,6 @@ public class RelationContextMapperProvider {
                     item.setScoreName("s4");
                     item.setScore(score);
                     partialRecommendationItemList.add(item);
-                    System.out.println(item);
                 }
 
                 return partialRecommendationItemList;

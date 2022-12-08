@@ -108,7 +108,6 @@ public class RecommendationAggregator {
                         MaxSourceItem maxSourceItem = maxSourceItemMap.get(sourcedPartialRecommendationItem.getScoreName());
                         for (Map.Entry<String, Integer> entry : sourcedPartialRecommendationItem.getSourcesMap().entrySet()) {
                             if (entry.getValue() > maxSourceItem.getMaxValue()) {
-                                System.out.println("Get best for " + sourcedPartialRecommendationItem);
                                 maxSourceItem.setMaxValue(entry.getValue());
                                 maxSourceItem.setSourceName(entry.getKey());
                             }
@@ -150,9 +149,6 @@ public class RecommendationAggregator {
                     recommendationItemList = recommendationItemList.subList(0, filterOptions.getMaxElements());
                 }
 
-                for (RecommendationItem recommendationItem : recommendationItemList) {
-                    System.out.println(recommendationItem.toString());
-                }
                 recommendationHolder.setItems(recommendationItemList);
                 return recommendationHolder;
             }

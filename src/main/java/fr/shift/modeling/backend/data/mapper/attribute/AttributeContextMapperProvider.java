@@ -86,7 +86,6 @@ public class AttributeContextMapperProvider {
                     item.setScoreName("s4");
                     item.setScore(score);
                     partialRecommendationItemList.add(item);
-                    System.out.println(item);
                 }
 
                 return partialRecommendationItemList;

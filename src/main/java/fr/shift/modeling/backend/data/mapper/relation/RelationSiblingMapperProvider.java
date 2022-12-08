@@ -30,7 +30,6 @@ public class RelationSiblingMapperProvider {
 
 
                 for (RelationSiblingQueryResult relationSiblingQueryResult : relationSiblingQueryResultList) {
-                    System.out.println(relationSiblingQueryResult);
 
                     String relationType = RelationTypeMapper.getStringType(relationSiblingQueryResult.getType(), relationSiblingQueryResult.isEndNode());
 
@@ -62,7 +61,6 @@ public class RelationSiblingMapperProvider {
 
 
                 }
-                System.out.println(occurenceMap);
                 List<PartialRecommendationItem> partialRecommendationItemList = new ArrayList<>();
                 for (Map.Entry<String, Integer> entry : occurenceMap.entrySet()) {
                     SourcedPartialRecommendationItem item = partialRecommendationItemMap.get(entry.getKey());
@@ -70,7 +68,6 @@ public class RelationSiblingMapperProvider {
                     item.setScore(score);
                     item.setScoreName("s3");
                     partialRecommendationItemList.add(item);
-                    //System.out.println(item.toString());
                 }
                 return partialRecommendationItemList;
             }

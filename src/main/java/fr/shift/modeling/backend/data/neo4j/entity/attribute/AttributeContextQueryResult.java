@@ -49,7 +49,6 @@ public class AttributeContextQueryResult {
         this.modelId = modelId;
         this.maxCtx = maxCtx;
         this.sources = sources;
-        System.out.println("Sources for " + attributeName + " are " + sources);
     }
 
     public void setSources(List<String> sources) {
