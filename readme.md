@@ -28,8 +28,13 @@ is available when running the server.
 #### 1. Clone repository
 Clone this repository to access it locally on your machine.
 
-#### 2. Run data population script
-If you want the Neo4j and Redis containers to start populated with a sample DB to use the recommender, please follow this step.
+#### 2. Download data
+If you want the Neo4j and Redis containers to start populated with a sample DB to use the recommender, please follow step 2. and 3.
+Please download the following archive: https://shift-music.fr/work/modelingassistantrecommender/data-dump.zip
+Extract the archive and place the folder `data-dump` to the root of this project.
+
+#### 3. Run data population script
+
 Open a terminal at the root of the project. Run the script `init-script.sh` as follows:
 ```
 ./init-script.sh
@@ -38,7 +43,7 @@ On Windows, please use the PowerShell. If you have trouble to run the file, try 
 ```
 chmod +x ./init-script.sh
 ```
-#### 3. Start the docker containers
+#### 4. Start the docker containers
 To start Neo4j and Redis instances, and start the recommender server, use the following command at the root of the project:
 ```
 docker-compose up
