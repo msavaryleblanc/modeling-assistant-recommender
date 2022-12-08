@@ -1,0 +1,155 @@
+{
+	"info": {
+		"_postman_id": "9ef85572-8c5d-4e80-97e4-1422cb8d1506",
+		"name": "Modeling Assistant Recommender",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24796435"
+	},
+	"item": [
+		{
+			"name": "Request with one class",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"User\",\r\n    \"classNames\": [],\r\n    \"attributes\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/attributes/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"attributes",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Request with one class with filter on number of elements",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"User\",\r\n    \"classNames\": [],\r\n    \"attributes\": [],\r\n    \"filterOptions\":{\r\n        \"scoreThreshold\": 0,\r\n        \"maxElements\": 10\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/attributes/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"attributes",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Request with one class with filter on score",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"User\",\r\n    \"classNames\": [],\r\n    \"attributes\": [],\r\n    \"filterOptions\":{\r\n        \"scoreThreshold\": 0.7,\r\n        \"maxElements\": -1\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/attributes/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"attributes",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Request with multiple classes and attributes",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"User\",\r\n    \"classNames\": [\"Cart\", \"Order\", \"Invoice\"],\r\n    \"attributes\": [\"phone\", \"email\"],\r\n    \"filterOptions\":{\r\n        \"scoreThreshold\": 0,\r\n        \"maxElements\": 10\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/attributes/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"attributes",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Request with multiple attributes",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Car\",\r\n    \"classNames\": [],\r\n    \"attributes\": [\"color\", \"price\"],\r\n    \"filterOptions\":{\r\n        \"scoreThreshold\": 0,\r\n        \"maxElements\": 10\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/attributes/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"attributes",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
