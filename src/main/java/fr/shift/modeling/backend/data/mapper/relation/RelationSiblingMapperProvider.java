@@ -49,7 +49,7 @@ public class RelationSiblingMapperProvider {
                         occurenceMap.replace(relationSiblingQueryResult.getTargetName(), currentCounter);
                         distinctClassSet.addAll(relationSiblingQueryResult.getLinkClassIds());
 
-                        partialItem.addType(relationType, 1);
+                        partialItem.addType(relationType, relationSiblingQueryResult.getLinkClassIds().size());
 
                         Integer sourceCounter = partialItem.getSourcesMap().get(relationSiblingQueryResult.getSourceName());
                         if (sourceCounter == null) {

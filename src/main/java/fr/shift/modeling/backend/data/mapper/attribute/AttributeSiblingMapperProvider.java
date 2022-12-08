@@ -43,7 +43,7 @@ public class AttributeSiblingMapperProvider {
                         currentCounter += attributeSiblingQueryResult.getOccNumber();
                         occurenceMap.replace(attributeSiblingQueryResult.getAttributeName(), currentCounter);
                         distinctClassSet.addAll(attributeSiblingQueryResult.getClassIdList());
-                        partialItem.addType(attributeSiblingQueryResult.getAttributeType(), 1);
+                        partialItem.addType(attributeSiblingQueryResult.getAttributeType(), attributeSiblingQueryResult.getOccNumber());
                         Integer sourceCounter = partialItem.getSourcesMap().get(attributeSiblingQueryResult.getSiblingName());
                         if (sourceCounter == null) {
                             partialItem.getSourcesMap().put(attributeSiblingQueryResult.getSiblingName(), 0);
