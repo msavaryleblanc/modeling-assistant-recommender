@@ -5,10 +5,10 @@ package fr.shift.modeling.backend.data;
  * The Modeling Assistant Recommender is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
  * You should have received a copy of the GNU General Public License along with The Modeling Assistant Recommender. If not, see <https://www.gnu.org/licenses/>.
  */
-import fr.shift.modeling.backend.data.neo4j.entity.AttributeContextQueryResult;
-import fr.shift.modeling.backend.data.neo4j.entity.AttributeTotalOccurenceQueryResult;
-import fr.shift.modeling.backend.data.neo4j.entity.AttributeOccurrenceQueryResult;
-import fr.shift.modeling.backend.data.neo4j.entity.AttributeSiblingQueryResult;
+import fr.shift.modeling.backend.data.neo4j.entity.attribute.AttributeContextQueryResult;
+import fr.shift.modeling.backend.data.neo4j.entity.attribute.AttributeTotalOccurenceQueryResult;
+import fr.shift.modeling.backend.data.neo4j.entity.attribute.AttributeOccurrenceQueryResult;
+import fr.shift.modeling.backend.data.neo4j.entity.attribute.AttributeSiblingQueryResult;
 import fr.shift.modeling.backend.data.neo4j.datasource.Neo4jDatasource;
 import fr.shift.modeling.backend.data.redis.datasource.RedisDatasource;
 import fr.shift.modeling.backend.data.redis.entity.KeyEntity;
@@ -42,7 +42,7 @@ public class AttributeRecommenderRemoteDatasource {
      * @return the map of attribute names to their TotalOccurenceQueryResult
      */
     public Mono<Map<String, AttributeTotalOccurenceQueryResult>> getAttributeTotalOccurrence(List<String> attributeNameList) {
-        return redisDatasource.getAttributeTotalOccurrence(attributeNameList, KeyEntity.Type.ATTRIBUTE)
+        return redisDatasource.getKeyTotalOccurrence(attributeNameList, KeyEntity.Type.ATTRIBUTE)
                 .map(new Function<>() {
                     @Override
                     public Map<String, AttributeTotalOccurenceQueryResult> apply(List<KeyEntity> keyEntities) {

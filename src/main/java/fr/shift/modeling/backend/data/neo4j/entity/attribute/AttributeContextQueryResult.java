@@ -1,4 +1,4 @@
-package fr.shift.modeling.backend.data.neo4j.entity;
+package fr.shift.modeling.backend.data.neo4j.entity.attribute;
 /*
  * This file is part of the Modeling Assistant Recommender. Author: Maxime Savary-Leblanc
  * The Modeling Assistant Recommender is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
@@ -8,61 +8,61 @@ package fr.shift.modeling.backend.data.neo4j.entity;
 
 import java.util.List;
 
-public class AttributeSiblingQueryResult {
+public class AttributeContextQueryResult {
 
-    //The name of the attributes
+    //The name of the attribute
     private String attributeName;
 
+    //The type of the attribute
     private String attributeType;
 
-    //The id of the containing class, useful to get
-    //the number of distinct classes
-    private List<Integer> classIdList;
+    //The id of the model it comes from
+    private int modelId;
 
-    //The occurence number of this attributes with regard
-    //to the list of attributes in parameter
-    private int occNumber;
-
-    private String siblingName;
+    //Sum of all ctxLevel
+    private int maxCtx;
+    private List<String> sources;
 
     public String getAttributeName() {
         return attributeName;
     }
 
-
-
-    public int getOccNumber() {
-        return occNumber;
+    public int getModelId() {
+        return modelId;
     }
 
-    public String getSiblingName() {
-        return siblingName;
+    public int getMaxCtx() {
+        return maxCtx;
     }
 
     public String getAttributeType() {
         return attributeType;
     }
 
-    public List<Integer> getClassIdList() {
-        return classIdList;
+    public List<String> getSources() {
+        return sources;
     }
 
-    public AttributeSiblingQueryResult(String attributeName, String attributeType, List<Integer> classIdList, int occNumber, String siblingName) {
+    public AttributeContextQueryResult(String attributeName, String attributeType, int modelId, int maxCtx, List<String> sources) {
         this.attributeName = attributeName;
         this.attributeType = attributeType;
-        this.classIdList = classIdList;
-        this.occNumber = occNumber;
-        this.siblingName = siblingName;
+        this.modelId = modelId;
+        this.maxCtx = maxCtx;
+        this.sources = sources;
+        System.out.println("Sources for " + attributeName + " are " + sources);
+    }
+
+    public void setSources(List<String> sources) {
+        this.sources = sources;
     }
 
     @Override
     public String toString() {
-        return "AttributeSiblingQueryResult{" +
+        return "AttributeContextQueryResult{" +
                 "attributeName='" + attributeName + '\'' +
-                ", attributeType='" + attributeType + '\'' +
-                ", classIdList=" + classIdList +
-                ", occNumber=" + occNumber +
-                ", siblingName='" + siblingName + '\'' +
+                ", modelId=" + modelId +
+                ", maxCtx=" + maxCtx +
+                ", sources=" + sources +
                 '}';
     }
 }

@@ -48,8 +48,8 @@ public class RedisDatasource {
 
     }
 
-    public Mono<List<KeyEntity>> getAttributeTotalOccurrence(List<String> attributeNameList, KeyEntity.Type type){
-        List<String> keys = attributeNameList.stream().map((s) -> createKey(s, type)).toList();
+    public Mono<List<KeyEntity>> getKeyTotalOccurrence(List<String> nameList, KeyEntity.Type type){
+        List<String> keys = nameList.stream().map((s) -> createKey(s, type)).toList();
         return redisConnector.findAll(keys).collectList();
     }
     private String createKey(KeyEntity keyEntity) {

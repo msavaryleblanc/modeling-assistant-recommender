@@ -1,4 +1,4 @@
-package fr.shift.modeling.backend.domain.evaluator.attribute;
+package fr.shift.modeling.backend.domain.evaluator.relation;
 
 /*
  * This file is part of the Modeling Assistant Recommender. Author: Maxime Savary-Leblanc
@@ -16,18 +16,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static fr.shift.modeling.backend.domain.evaluator.Context.CONTEXT_1;
-import static fr.shift.modeling.backend.domain.evaluator.Context.CONTEXT_2;
-import static fr.shift.modeling.backend.domain.evaluator.Context.CONTEXT_3;
-import static fr.shift.modeling.backend.domain.evaluator.Context.CONTEXT_4;
-
-
 /**
  * Abstract definition of the AttributeContextEvaluator.
  * These objects are used to aggregate individual scores into one final confidence score for Attributes recommendations.
  */
 @Service
-public abstract class AttributeContextEvaluator extends ContextEvaluator {
+public abstract class RelationContextEvaluator extends ContextEvaluator {
 
     public List<String> getAllScoreNames() {
         List<String> scoreNames = new ArrayList<>();
@@ -38,11 +32,11 @@ public abstract class AttributeContextEvaluator extends ContextEvaluator {
         return scoreNames;
     }
 
-    public abstract HashMap<String, Double> getInvolvedScores(Context attributeContext);
+    public abstract HashMap<String, Double> getInvolvedScores(Context context);
 
     public Double getConfidenceScore(RecommendationItem recommendationItem,
-                                    List<String> attributeNameList,
-                                    List<String> classNameList) {
+                                   List<String> attributeNameList,
+                                   List<String> classNameList) {
         double finalScore = 0d;
         HashMap<String, Double> weights = getInvolvedScores(getContext(attributeNameList, classNameList));
         for (Map.Entry<String, Double> entry : weights.entrySet()) {

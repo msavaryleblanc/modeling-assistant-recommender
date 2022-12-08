@@ -5,10 +5,12 @@ package fr.shift.modeling.backend.data.neo4j.datasource;
  * The Modeling Assistant Recommender is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
  * You should have received a copy of the GNU General Public License along with The Modeling Assistant Recommender. If not, see <https://www.gnu.org/licenses/>.
  */
-import fr.shift.modeling.backend.data.neo4j.entity.AttributeContextQueryResult;
-import fr.shift.modeling.backend.data.neo4j.entity.AttributeOccurrenceQueryResult;
-import fr.shift.modeling.backend.data.neo4j.entity.AttributeSiblingQueryResult;
-import fr.shift.modeling.backend.data.redis.RedisConnector;
+import fr.shift.modeling.backend.data.neo4j.entity.attribute.AttributeContextQueryResult;
+import fr.shift.modeling.backend.data.neo4j.entity.attribute.AttributeOccurrenceQueryResult;
+import fr.shift.modeling.backend.data.neo4j.entity.attribute.AttributeSiblingQueryResult;
+import fr.shift.modeling.backend.data.neo4j.entity.relation.RelationContextQueryResult;
+import fr.shift.modeling.backend.data.neo4j.entity.relation.RelationOccurrenceQueryResult;
+import fr.shift.modeling.backend.data.neo4j.entity.relation.RelationSiblingQueryResult;
 import org.neo4j.driver.Value;
 import org.springframework.data.neo4j.core.Neo4jClient;
 import org.springframework.stereotype.Repository;
@@ -100,4 +102,48 @@ public class Neo4jDatasource {
     }
 
 
+    public Mono<List<RelationOccurrenceQueryResult>> getRelationOccurrence(String className, List<String> linkedClassNames){
+        return Flux.fromIterable(neo4jClient.query(
+                "MATCH (t:Class {name : '"+className+"'})-[r]-(p:Class) WHERE NOT p.name in "+QueryUtils.formatList(linkedClassNames)+" RETURN DISTINCT r.type as relationType, p.name as className, " +
+                        "count(p.name) as occNumber, endNode(r)=p as isEndNode")
+                .fetchAs(RelationOccurrenceQueryResult.class)
+                .mappedBy((typeSystem, record) -> new RelationOccurrenceQueryResult(
+                        record.get("className").asString(),
+                        record.get("relationType").asString(),
+                        record.get("occNumber").asInt(),
+                        record.get("isEndNode").asBoolean())).all()).collectList();
+    }
+
+    public Mono<List<RelationSiblingQueryResult>> getRelationSiblings(String className, List<String> linkedClassNameList){
+        return Flux.fromIterable(neo4jClient.query(
+                "MATCH (a:Class)-[:isLinked]-(b) WHERE a.name in "+QueryUtils.formatList(linkedClassNameList)+" MATCH (b)-[r:isLinked]-(c) " +
+                        "WHERE id(c)<>id(a) AND " +
+                        "NOT c.name = '"+className+"' AND not c.name in "+QueryUtils.formatList(linkedClassNameList)+
+                        "  return DISTINCT a.name as sourceName, r.type as type, c.name as targetName, " +
+                        "endnode(r)=c as isEndNode, collect(id(b)) as linkClassIds order by size(linkClassIds) desc")
+                .fetchAs(RelationSiblingQueryResult.class)
+                .mappedBy((typeSystem, record) -> new RelationSiblingQueryResult(
+                        record.get("sourceName").asString(),
+                        record.get("type").asString(),
+                        record.get("targetName").asString(),
+                        record.get("isEndNode").asBoolean(),
+                        record.get("linkClassIds").asList((Value::asInt)))).all()).collectList();
+    }
+
+    public Mono<List<RelationContextQueryResult>> getRelationContext(String className, List<String> classNameList, List<String> linkedClassNames){
+        return Flux.fromIterable(neo4jClient.query(
+                "MATCH (n:Class)--(m:Model)-[z]-(t:Class {name : '"+className+"'})-[r]-(p:Class) WITH n,m,p,r " +
+                        "WHERE n.name in "+QueryUtils.formatList(classNameList)+"and not p.name in "+QueryUtils.formatList(linkedClassNames)
+                        +" WITH p.name as className,n,m,p,r RETURN distinct " +
+                        "collect(n.name) as sources, id(m) as modelId, count(n.name) as maxCtx, r.type as relationType, " +
+                        "className, endNode(r)=p as isEndNode ORDER BY maxCtx DESC")
+                .fetchAs(RelationContextQueryResult.class)
+                .mappedBy((typeSystem, record) -> new RelationContextQueryResult(
+                        record.get("className").asString(),
+                        record.get("relationType").asString(),
+                        record.get("isEndNode").asBoolean(),
+                        record.get("maxCtx").asInt(),
+                        record.get("modelId").asInt(),
+                        record.get("sources").asList((Value::asString)))).all()).collectList();
+    }
 }

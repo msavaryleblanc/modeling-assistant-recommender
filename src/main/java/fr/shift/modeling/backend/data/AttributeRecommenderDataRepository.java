@@ -6,11 +6,11 @@ package fr.shift.modeling.backend.data;
  * You should have received a copy of the GNU General Public License along with The Modeling Assistant Recommender. If not, see <https://www.gnu.org/licenses/>.
  */
 
-import fr.shift.modeling.backend.data.mapper.AttributeContextMapperProvider;
-import fr.shift.modeling.backend.data.mapper.AttributeOccurrenceAndExclusivityMapperProvider;
-import fr.shift.modeling.backend.data.mapper.AttributeSiblingMapperProvider;
-import fr.shift.modeling.backend.data.neo4j.entity.AttributeTotalOccurenceQueryResult;
-import fr.shift.modeling.backend.data.neo4j.entity.AttributeOccurrenceQueryResult;
+import fr.shift.modeling.backend.data.mapper.attribute.AttributeContextMapperProvider;
+import fr.shift.modeling.backend.data.mapper.attribute.AttributeOccurrenceAndExclusivityMapperProvider;
+import fr.shift.modeling.backend.data.mapper.attribute.AttributeSiblingMapperProvider;
+import fr.shift.modeling.backend.data.neo4j.entity.attribute.AttributeTotalOccurenceQueryResult;
+import fr.shift.modeling.backend.data.neo4j.entity.attribute.AttributeOccurrenceQueryResult;
 import fr.shift.modeling.backend.controller.entity.PartialRecommendationItem;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;

@@ -9,19 +9,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
-public class AttributeRecommendationHolder {
-    @JsonProperty("attributes")
-    List<AttributeRecommendationItem> attributeRecommendationItemList;
+public class RecommendationHolder {
+    @JsonProperty("items")
+    List<RecommendationItem> items;
 
     @JsonProperty("sourcesMax")
     List<MaxSourceItem> maxSourceItemList;
 
-    public List<AttributeRecommendationItem> getAttributeRecommendationItemList() {
-        return attributeRecommendationItemList;
+    public List<RecommendationItem> getItems() {
+        return items;
     }
 
-    public void setAttributeRecommendationItemList(List<AttributeRecommendationItem> attributeRecommendationItemList) {
-        this.attributeRecommendationItemList = attributeRecommendationItemList;
+    public void setItems(List<RecommendationItem> recommendationItemList) {
+        this.items = recommendationItemList;
     }
 
     public List<MaxSourceItem> getMaxSourceItemList() {

@@ -9,7 +9,7 @@ package fr.shift.modeling.backend.controller.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AttributeRecommendationRequest {
+public class RecommendationRequest {
 
     String name;
     List<String> attributes;

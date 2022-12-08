@@ -12,20 +12,19 @@ import java.text.DecimalFormat;
 import java.util.*;
 import java.util.function.Function;
 
-public class AttributeRecommendationItem {
+public class RecommendationItem {
 
     @JsonProperty("scores")
     List<PartialRecommendationItem> partialRecommendationItemList;
 
     Map<String, Integer> types;
 
-
     String name;
     Double confidenceScore = 0d;
     transient DecimalFormat numberFormat = new DecimalFormat("0.00");
 
 
-    public AttributeRecommendationItem(String name) {
+    public RecommendationItem(String name) {
         this.name = name;
         this.partialRecommendationItemList = new ArrayList<>();
         this.types = new HashMap<>();
@@ -34,8 +33,8 @@ public class AttributeRecommendationItem {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof AttributeRecommendationItem)) return false;
-        AttributeRecommendationItem that = (AttributeRecommendationItem) o;
+        if (!(o instanceof RecommendationItem)) return false;
+        RecommendationItem that = (RecommendationItem) o;
         return Objects.equals(name, that.name);
     }
 
