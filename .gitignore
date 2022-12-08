@@ -8,6 +8,7 @@ HELP.md
 !/target/backend-*.jar
 
 /data-dump/
+/data-dump.zip
 
 ### STS ###
 .apt_generated
@@ -36,3 +37,4 @@ build/
 
 ### VS Code ###
 .vscode/
+
