@@ -1,6 +1,6 @@
-version: '6'
+version: '1'
 services:
-  neo4j34:
+  neo4j:
     image: neo4j:5.2.0-community
     hostname: neo4j
     container_name: neo4j
@@ -29,7 +29,7 @@ services:
       retries: 20
 
 
-  redis13:
+  redis:
     image: redis:7.0.5-alpine
     hostname: redis
     container_name: redis
@@ -41,7 +41,7 @@ services:
     networks:
       - network1
 
-  app20:
+  app:
     build:
       context: .
       args:
@@ -53,8 +53,8 @@ services:
       - "6062:6062"
       - "8080:8080"
     depends_on:
-      - "redis13"
-      - "neo4j34"
+      - "redis"
+      - "neo4j"
     networks:
       - network1
 

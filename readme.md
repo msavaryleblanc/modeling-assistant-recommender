@@ -48,7 +48,9 @@ To start Neo4j and Redis instances, and start the recommender server, use the fo
 ```
 docker-compose up
 ```
-The containers will start after a few seconds.
+If images of neo4j and redis must be retrieved for the first launch, the first start might take several minutes.
+the construction of the Docker image of the app will also call a Maven build, which will download all libraries.
+The containers will start after these processes.
 
 
 ## Using the recommender
