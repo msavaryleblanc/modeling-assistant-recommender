@@ -43,6 +43,7 @@ On Windows, please use the PowerShell. If you have trouble to run the file, try 
 ```
 chmod +x ./init-script.sh
 ```
+If you don't want to populate databases, class script `init-empty.sh`
 #### 4. Start the docker containers
 To start Neo4j and Redis instances, and start the recommender server, use the following command at the root of the project:
 ```
