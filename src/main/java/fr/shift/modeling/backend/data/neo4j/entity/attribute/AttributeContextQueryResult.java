@@ -11,16 +11,16 @@ import java.util.List;
 public class AttributeContextQueryResult {
 
     //The name of the attribute
-    private String attributeName;
+    private final String attributeName;
 
     //The type of the attribute
-    private String attributeType;
+    private final String attributeType;
 
     //The id of the model it comes from
-    private int modelId;
+    private final int modelId;
 
     //Sum of all ctxLevel
-    private int maxCtx;
+    private final int maxCtx;
     private List<String> sources;
 
     public String getAttributeName() {

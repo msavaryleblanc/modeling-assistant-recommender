@@ -72,13 +72,10 @@ public class RecommendationAggregator {
                         relationRecommenderDataRepository.getOccurrenceAndExclusivityRankedItems(className,linkedClassNames),
                         relationRecommenderDataRepository.getSiblingRankedItems(className, linkedClassNames),
                         relationRecommenderDataRepository.getContextRankedItems(className, classNameList,linkedClassNames))
-                .collectList().map(new Function<List<List<PartialRecommendationItem>>, List<PartialRecommendationItem>>() {
-                    @Override
-                    public List<PartialRecommendationItem> apply(List<List<PartialRecommendationItem>> lists) {
-                        List<PartialRecommendationItem> total = new ArrayList<>();
-                        lists.forEach(total::addAll);
-                        return total;
-                    }
+                .collectList().map(lists -> {
+                    List<PartialRecommendationItem> total = new ArrayList<>();
+                    lists.forEach(total::addAll);
+                    return total;
                 }).map(getPartialItemsMappingFunction(contextEvaluator, request));
     }
 
@@ -95,14 +92,12 @@ public class RecommendationAggregator {
 
                 final HashMap<String, MaxSourceItem> maxSourceItemMap = new HashMap<>();
                 final HashMap<String, RecommendationItem> recommendationHashmap = new HashMap<>();
-                final List<PartialRecommendationItem> partialRecommendationItemList = new ArrayList<>();
 
 
                 for (PartialRecommendationItem partialRecommendationItem : partialRecommendationItems) {
 
                     //compute which is the best source for each score
-                    if (partialRecommendationItem instanceof SourcedPartialRecommendationItem) {
-                        SourcedPartialRecommendationItem sourcedPartialRecommendationItem = (SourcedPartialRecommendationItem) partialRecommendationItem;
+                    if (partialRecommendationItem instanceof SourcedPartialRecommendationItem sourcedPartialRecommendationItem) {
                         maxSourceItemMap.computeIfAbsent(sourcedPartialRecommendationItem.getScoreName(), new Function<String, MaxSourceItem>() {
                             @Override
                             public MaxSourceItem apply(String s) {
@@ -113,7 +108,7 @@ public class RecommendationAggregator {
                         MaxSourceItem maxSourceItem = maxSourceItemMap.get(sourcedPartialRecommendationItem.getScoreName());
                         for (Map.Entry<String, Integer> entry : sourcedPartialRecommendationItem.getSourcesMap().entrySet()) {
                             if (entry.getValue() > maxSourceItem.getMaxValue()) {
-                                System.out.println("Get best for " + sourcedPartialRecommendationItem.toString());
+                                System.out.println("Get best for " + sourcedPartialRecommendationItem);
                                 maxSourceItem.setMaxValue(entry.getValue());
                                 maxSourceItem.setSourceName(entry.getKey());
                             }
@@ -141,11 +136,10 @@ public class RecommendationAggregator {
 
                     if (recommendationItem.getConfidenceScore() >= filterOptions.getScoreThreshold()) {
                         recommendationItemList.add(recommendationItem);
-                        //System.out.println(attributeRecommendationItem.toString());
                     }
                 }
 
-                Collections.sort(recommendationItemList, new Comparator<RecommendationItem>() {
+                recommendationItemList.sort(new Comparator<RecommendationItem>() {
                     @Override
                     public int compare(RecommendationItem o1, RecommendationItem o2) {
                         return -Double.compare(o1.getConfidenceScore(), o2.getConfidenceScore());

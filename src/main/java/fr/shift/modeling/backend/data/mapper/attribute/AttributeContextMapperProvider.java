@@ -55,11 +55,9 @@ public class AttributeContextMapperProvider {
                     currentContext += attributeContextQueryResult.getMaxCtx();
                     ctxMap.replace(attributeContextQueryResult.getAttributeName(), currentContext);
 
-                    System.out.println(attributeContextQueryResult);
-                    System.out.println(attributeContextQueryResult.getSources());
                     List<String> sources = new ArrayList<>(attributeContextQueryResult.getSources());
                     sources.sort(Comparator.naturalOrder());
-                    //attributeContextQueryResult.setSources(sources);
+
                     String key = String.join("+", sources);
 
                     item.getSourcesMap().computeIfAbsent(key, new Function<String, Integer>() {
@@ -82,14 +80,13 @@ public class AttributeContextMapperProvider {
 
                 for (Map.Entry<String, SourcedPartialRecommendationItem> entry : partialRecommendationItemHashMap.entrySet()) {
                     SourcedPartialRecommendationItem item = entry.getValue();
-                /*double score = 0.5d * ((attributeContextQueryResult.getMaxCtxLevel() * 1d) / (maxHighestCtxLevel * 1d)) +
-                        0.5d * ((attributeContextQueryResult.getTotalCtxLevel() * 1d) / (maxTotalCtxLevel * 1d));*/
+
                     double score = ((ctxMap.get(entry.getKey()) * 1d) / (maxTotalCtxLevel * 1d));
 
                     item.setScoreName("s4");
                     item.setScore(score);
                     partialRecommendationItemList.add(item);
-                    System.out.println(item.toString());
+                    System.out.println(item);
                 }
 
                 return partialRecommendationItemList;

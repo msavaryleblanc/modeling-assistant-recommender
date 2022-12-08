@@ -8,7 +8,6 @@ package fr.shift.modeling.backend.data.mapper.relation;
 
 import fr.shift.modeling.backend.controller.entity.PartialRecommendationItem;
 import fr.shift.modeling.backend.controller.entity.SourcedPartialRecommendationItem;
-import fr.shift.modeling.backend.data.neo4j.entity.attribute.AttributeContextQueryResult;
 import fr.shift.modeling.backend.data.neo4j.entity.relation.RelationContextQueryResult;
 
 import java.util.*;
@@ -64,7 +63,7 @@ public class RelationContextMapperProvider {
                     System.out.println(relationContextQueryResult.getSources());
                     List<String> sources = new ArrayList<>(relationContextQueryResult.getSources());
                     sources.sort(Comparator.naturalOrder());
-                    //attributeContextQueryResult.setSources(sources);
+
                     String key = String.join("+", sources);
 
                     item.getSourcesMap().computeIfAbsent(key, new Function<String, Integer>() {
@@ -87,14 +86,13 @@ public class RelationContextMapperProvider {
 
                 for (Map.Entry<String, SourcedPartialRecommendationItem> entry : partialRecommendationItemHashMap.entrySet()) {
                     SourcedPartialRecommendationItem item = entry.getValue();
-                /*double score = 0.5d * ((attributeContextQueryResult.getMaxCtxLevel() * 1d) / (maxHighestCtxLevel * 1d)) +
-                        0.5d * ((attributeContextQueryResult.getTotalCtxLevel() * 1d) / (maxTotalCtxLevel * 1d));*/
+
                     double score = ((ctxMap.get(entry.getKey()) * 1d) / (maxTotalCtxLevel * 1d));
 
                     item.setScoreName("s4");
                     item.setScore(score);
                     partialRecommendationItemList.add(item);
-                    System.out.println(item.toString());
+                    System.out.println(item);
                 }
 
                 return partialRecommendationItemList;

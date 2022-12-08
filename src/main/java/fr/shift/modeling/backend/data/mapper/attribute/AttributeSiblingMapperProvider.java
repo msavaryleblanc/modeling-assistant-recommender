@@ -55,7 +55,7 @@ public class AttributeSiblingMapperProvider {
 
                     }
                 }
-                System.out.println(occurenceMap);
+
                 List<PartialRecommendationItem> partialRecommendationItemList = new ArrayList<>();
                 for (Map.Entry<String, Integer> entry : occurenceMap.entrySet()) {
                     SourcedPartialRecommendationItem item = partialRecommendationItemMap.get(entry.getKey());
@@ -63,7 +63,6 @@ public class AttributeSiblingMapperProvider {
                     item.setScore(score);
                     item.setScoreName("s3");
                     partialRecommendationItemList.add(item);
-                    //System.out.println(item.toString());
                 }
                 return partialRecommendationItemList;
             }

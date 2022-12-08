@@ -25,10 +25,9 @@ import java.util.function.Function;
 @Service
 public class AttributeRecommenderProvider {
 
-    private RecommendationAggregator recommendationAggregator;
-
-    private AttributeContextEvaluator attributeContextEvaluator;
-    private RelationContextEvaluator relationContextEvaluator;
+    private final RecommendationAggregator recommendationAggregator;
+    private final AttributeContextEvaluator attributeContextEvaluator;
+    private final RelationContextEvaluator relationContextEvaluator;
 
     public AttributeRecommenderProvider(RecommendationAggregator recommendationAggregator) {
         this.recommendationAggregator = recommendationAggregator;

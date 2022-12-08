@@ -41,7 +41,7 @@ public class RecommenderController {
     @RequestMapping(
             value = "/attributes/",
             method = RequestMethod.POST)
-    public DeferredResult<RecommendationResponse> processAttributes(@RequestBody RecommendationRequest request, HttpServletRequest requestServlet) {
+    public DeferredResult<RecommendationResponse> processAttributes(@RequestBody RecommendationRequest request) {
 
         long initTime = new Date().getTime();
 
@@ -63,7 +63,7 @@ public class RecommenderController {
     @RequestMapping(
             value = "/relations/",
             method = RequestMethod.POST)
-    public DeferredResult<RecommendationResponse> processRelations(@RequestBody RecommendationRequest request, HttpServletRequest requestServlet) {
+    public DeferredResult<RecommendationResponse> processRelations(@RequestBody RecommendationRequest request) {
 
         long initTime = new Date().getTime();
 

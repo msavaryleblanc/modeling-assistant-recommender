@@ -27,8 +27,8 @@ import java.util.function.Function;
 @Service
 public class AttributeRecommenderRemoteDatasource {
 
-    private Neo4jDatasource neo4jDatasource;
-    private RedisDatasource redisDatasource;
+    private final Neo4jDatasource neo4jDatasource;
+    private final RedisDatasource redisDatasource;
 
     public AttributeRecommenderRemoteDatasource(Neo4jDatasource neo4jDatasource, RedisDatasource redisDatasource) {
         this.neo4jDatasource = neo4jDatasource;

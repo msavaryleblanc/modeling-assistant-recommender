@@ -86,8 +86,7 @@ public class PartialRecommendationItem {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof PartialRecommendationItem)) return false;
-        PartialRecommendationItem that = (PartialRecommendationItem) o;
+        if (!(o instanceof PartialRecommendationItem that)) return false;
         return Double.compare(that.score, score) == 0 &&
                 Objects.equals(name, that.name) &&
                 Objects.equals(scoreName, that.scoreName);

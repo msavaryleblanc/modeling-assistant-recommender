@@ -27,8 +27,8 @@ import java.util.function.Function;
 @Repository
 public class RedisConnector {
 
-    private ReactiveRedisTemplate<String, String> template;
-    private Gson gson;
+    private final ReactiveRedisTemplate<String, String> template;
+    private final Gson gson;
 
     public RedisConnector(ReactiveRedisTemplate<String, String> template, Gson gson) {
         this.template = template;

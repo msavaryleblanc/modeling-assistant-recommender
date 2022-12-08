@@ -21,7 +21,7 @@ import java.util.function.Function;
 @Repository
 public class RedisDatasource {
 
-    private RedisConnector redisConnector;
+    private final RedisConnector redisConnector;
 
     public RedisDatasource(RedisConnector redisConnector) {
         this.redisConnector = redisConnector;

@@ -10,7 +10,7 @@ import java.util.Map;
 
 public class SourcedPartialRecommendationItem extends PartialRecommendationItem {
 
-    private Map<String, Integer> sourcesMap = new HashMap<>();
+    private final Map<String, Integer> sourcesMap = new HashMap<>();
 
     public SourcedPartialRecommendationItem(String attributeName, String scoreName, double score) {
         super(attributeName, scoreName, score);

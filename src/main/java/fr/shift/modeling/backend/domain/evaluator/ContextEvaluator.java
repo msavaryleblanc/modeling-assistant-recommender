@@ -6,16 +6,14 @@ package fr.shift.modeling.backend.domain.evaluator;
  * The Modeling Assistant Recommender is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
  * You should have received a copy of the GNU General Public License along with The Modeling Assistant Recommender. If not, see <https://www.gnu.org/licenses/>.
  */
+
 import fr.shift.modeling.backend.controller.entity.RecommendationItem;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static fr.shift.modeling.backend.domain.evaluator.Context.*;
-import static fr.shift.modeling.backend.domain.evaluator.Context.CONTEXT_4;
 
 /**
  * Abstract definition of the AttributeContextEvaluator.

@@ -16,11 +16,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static fr.shift.modeling.backend.domain.evaluator.Context.CONTEXT_1;
-import static fr.shift.modeling.backend.domain.evaluator.Context.CONTEXT_2;
-import static fr.shift.modeling.backend.domain.evaluator.Context.CONTEXT_3;
-import static fr.shift.modeling.backend.domain.evaluator.Context.CONTEXT_4;
-
 
 /**
  * Abstract definition of the AttributeContextEvaluator.

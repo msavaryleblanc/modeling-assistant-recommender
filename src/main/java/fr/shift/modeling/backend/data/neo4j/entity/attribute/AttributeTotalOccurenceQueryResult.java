@@ -8,8 +8,8 @@ package fr.shift.modeling.backend.data.neo4j.entity.attribute;
 
 public class AttributeTotalOccurenceQueryResult {
 
-    private String attributeName;
-    private int totalOcc;
+    private final String attributeName;
+    private final int totalOcc;
 
     public AttributeTotalOccurenceQueryResult(String attributeName, int totalOcc) {
         this.attributeName = attributeName;

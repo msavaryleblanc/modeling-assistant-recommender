@@ -11,19 +11,19 @@ import java.util.List;
 public class AttributeSiblingQueryResult {
 
     //The name of the attributes
-    private String attributeName;
+    private final String attributeName;
 
-    private String attributeType;
+    private final String attributeType;
 
     //The id of the containing class, useful to get
     //the number of distinct classes
-    private List<Integer> classIdList;
+    private final List<Integer> classIdList;
 
     //The occurence number of this attributes with regard
     //to the list of attributes in parameter
-    private int occNumber;
+    private final int occNumber;
 
-    private String siblingName;
+    private final String siblingName;
 
     public String getAttributeName() {
         return attributeName;

@@ -7,8 +7,6 @@ package fr.shift.modeling.backend.data.mapper.relation;
  */
 
 import fr.shift.modeling.backend.controller.entity.PartialRecommendationItem;
-import fr.shift.modeling.backend.data.neo4j.entity.attribute.AttributeOccurrenceQueryResult;
-import fr.shift.modeling.backend.data.neo4j.entity.attribute.AttributeTotalOccurenceQueryResult;
 import fr.shift.modeling.backend.data.neo4j.entity.relation.RelationOccurrenceQueryResult;
 import fr.shift.modeling.backend.data.neo4j.entity.relation.RelationTotalOccurenceQueryResult;
 import reactor.util.function.Tuple2;

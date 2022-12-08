@@ -7,10 +7,6 @@ package fr.shift.modeling.backend.data;
  */
 
 import fr.shift.modeling.backend.data.neo4j.datasource.Neo4jDatasource;
-import fr.shift.modeling.backend.data.neo4j.entity.attribute.AttributeContextQueryResult;
-import fr.shift.modeling.backend.data.neo4j.entity.attribute.AttributeOccurrenceQueryResult;
-import fr.shift.modeling.backend.data.neo4j.entity.attribute.AttributeSiblingQueryResult;
-import fr.shift.modeling.backend.data.neo4j.entity.attribute.AttributeTotalOccurenceQueryResult;
 import fr.shift.modeling.backend.data.neo4j.entity.relation.RelationContextQueryResult;
 import fr.shift.modeling.backend.data.neo4j.entity.relation.RelationOccurrenceQueryResult;
 import fr.shift.modeling.backend.data.neo4j.entity.relation.RelationSiblingQueryResult;
@@ -32,8 +28,8 @@ import java.util.function.Function;
 @Service
 public class RelationRecommenderRemoteDatasource {
 
-    private Neo4jDatasource neo4jDatasource;
-    private RedisDatasource redisDatasource;
+    private final Neo4jDatasource neo4jDatasource;
+    private final RedisDatasource redisDatasource;
 
     public RelationRecommenderRemoteDatasource(Neo4jDatasource neo4jDatasource, RedisDatasource redisDatasource) {
         this.neo4jDatasource = neo4jDatasource;

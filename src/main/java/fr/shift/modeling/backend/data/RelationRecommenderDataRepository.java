@@ -7,14 +7,9 @@ package fr.shift.modeling.backend.data;
  */
 
 import fr.shift.modeling.backend.controller.entity.PartialRecommendationItem;
-import fr.shift.modeling.backend.data.mapper.attribute.AttributeContextMapperProvider;
-import fr.shift.modeling.backend.data.mapper.attribute.AttributeOccurrenceAndExclusivityMapperProvider;
-import fr.shift.modeling.backend.data.mapper.attribute.AttributeSiblingMapperProvider;
 import fr.shift.modeling.backend.data.mapper.relation.RelationContextMapperProvider;
 import fr.shift.modeling.backend.data.mapper.relation.RelationOccurrenceAndExclusivityMapperProvider;
 import fr.shift.modeling.backend.data.mapper.relation.RelationSiblingMapperProvider;
-import fr.shift.modeling.backend.data.neo4j.entity.attribute.AttributeOccurrenceQueryResult;
-import fr.shift.modeling.backend.data.neo4j.entity.attribute.AttributeTotalOccurenceQueryResult;
 import fr.shift.modeling.backend.data.neo4j.entity.relation.RelationOccurrenceQueryResult;
 import fr.shift.modeling.backend.data.neo4j.entity.relation.RelationTotalOccurenceQueryResult;
 import org.springframework.stereotype.Service;

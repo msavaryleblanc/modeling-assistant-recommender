@@ -8,7 +8,6 @@ package fr.shift.modeling.backend.data.mapper.relation;
 
 import fr.shift.modeling.backend.controller.entity.PartialRecommendationItem;
 import fr.shift.modeling.backend.controller.entity.SourcedPartialRecommendationItem;
-import fr.shift.modeling.backend.data.neo4j.entity.attribute.AttributeSiblingQueryResult;
 import fr.shift.modeling.backend.data.neo4j.entity.relation.RelationSiblingQueryResult;
 
 import java.util.*;

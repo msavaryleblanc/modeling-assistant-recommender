@@ -8,9 +8,9 @@ package fr.shift.modeling.backend.data.neo4j.entity.attribute;
 
 public class AttributeOccurrenceQueryResult {
 
-    private String attributeName;
-    private String attributeType;
-    private int occInClass;
+    private final String attributeName;
+    private final String attributeType;
+    private final int occInClass;
     private int classNumber;
 
     public String getAttributeName() {
