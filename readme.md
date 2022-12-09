@@ -59,6 +59,8 @@ The containers will start after these processes.
 ## Using the recommender
 The Modeling Assistant Recommender exposes API endpoints for clients to contact and get recommendations.
 When the containers are started, you can retrieve recommendations by running POST HTTP requests on the endpoints as described in the following API documentation: https://app.swaggerhub.com/apis-docs/msavaryleblanc/ModelingAssistant/1.0.0
+By default, the recommender system is available at `http://localhost:8080/`.
+
 
 We also provide a collection of Postman requests, to try the server easily. 
 You can download Postman [here](https://www.postman.com/downloads/) and import the collection that is located in the root of the project, as `modeling_assistant_recommender.postman_collection.json`
