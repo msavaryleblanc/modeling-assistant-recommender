@@ -6,8 +6,10 @@ please see Section [Current status](#current-status).
 
 ### Current Status
 #### Version 1.0.0
-- Support for Attributes recommendations based on scores s1 (Recurrence), s2 (Exclusivity), 
+- Support for Attribute recommendations based on scores s1 (Recurrence), s2 (Exclusivity), 
 s3 (Siblings synergy), and s4 (Context).
+- Support for Relation recommendations based on scores s1 (Recurrence), s2 (Exclusivity),
+    s3 (Siblings synergy), and s4 (Context).
 - Filtering support based on `FilterOptions` class, which allows filtering according to 
 confidence score or number of recommendations.
 
