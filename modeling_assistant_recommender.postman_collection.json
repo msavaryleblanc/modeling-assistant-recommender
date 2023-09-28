@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "9ef85572-8c5d-4e80-97e4-1422cb8d1506",
+		"_postman_id": "dd74c66c-5983-45ac-ba48-3db8cbbbe24c",
 		"name": "Modeling Assistant Recommender",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "24796435"
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "28519129"
 	},
 	"item": [
 		{
@@ -20,18 +20,7 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "http://localhost:8080/attributes/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"attributes",
-						""
-					]
-				}
+				"url": "http://localhost:8080/attributes/"
 			},
 			"response": []
 		},
@@ -49,18 +38,7 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "http://localhost:8080/attributes/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"attributes",
-						""
-					]
-				}
+				"url": "http://localhost:8080/attributes/"
 			},
 			"response": []
 		},
@@ -78,18 +56,7 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "http://localhost:8080/attributes/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"attributes",
-						""
-					]
-				}
+				"url": "http://localhost:8080/attributes/"
 			},
 			"response": []
 		},
@@ -107,18 +74,25 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "http://localhost:8080/attributes/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"attributes",
-						""
-					]
-				}
+				"url": "http://localhost:8080/attributes/"
+			},
+			"response": []
+		},
+		{
+			"name": "Request relationships with multiple classes and attributes",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"User\",\r\n    \"classNames\": [\"Cart\", \"Order\", \"Invoice\"],\r\n    \"linkedClasses\": [\"Cart\"],\r\n    \"attributes\": [\"phone\", \"email\"],\r\n    \"filterOptions\":{\r\n        \"scoreThreshold\": 0,\r\n        \"maxElements\": 10\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/relations/"
 			},
 			"response": []
 		},
@@ -136,18 +110,7 @@
 						}
 					}
 				},
-				"url": {
-					"raw": "http://localhost:8080/attributes/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"attributes",
-						""
-					]
-				}
+				"url": "http://localhost:8080/attributes/"
 			},
 			"response": []
 		}

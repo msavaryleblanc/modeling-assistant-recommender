@@ -4,12 +4,27 @@ This project defines a score-based multi-criteria recommender system which is ab
 UML elements recommendations for requests. To learn about the current abilities of the system, 
 please see Section [Current status](#current-status).
 
+This system has been used to integrate recommendation in existing modeling tools, see the following demo videos:
+- https://www.youtube.com/watch?v=6mxoJOhwgbk
+- https://www.youtube.com/watch?v=eyE3w8Ekjwg
+
+
 ### Current Status
 #### Version 1.0.0
 - Support for Attributes recommendations based on scores s1 (Recurrence), s2 (Exclusivity), 
 s3 (Siblings synergy), and s4 (Context).
 - Filtering support based on `FilterOptions` class, which allows filtering according to 
 confidence score or number of recommendations.
+#### Dependencies
+The following dependencies are used in the project:
+- Maven 3.8.6
+- Java 19 (openjdk) (compiled for Java 18)
+- Springboot (springboot starter 2.7.6)
+- Docker (min. version 4.6.1)
+- Redis 7.0.5
+- Neo4J 5.2.0 Community
+- Neo4J connector (with springboot starter 2.7.6))
+- Redis Lettuce connector 6.2.1
 
 
 ## Installation
@@ -58,12 +73,38 @@ The containers will start after these processes.
 The Modeling Assistant Recommender exposes API endpoints for clients to contact and get recommendations.
 When the containers are started, you can retrieve recommendations by running POST HTTP requests on the endpoints as described in the following API documentation: https://app.swaggerhub.com/apis-docs/msavaryleblanc/ModelingAssistant/1.0.0
 
-We also provide a collection of Postman requests, to try the server easily. 
+We also provide a collection of Postman requests for attributes and relationships, to try the server easily. 
 You can download Postman [here](https://www.postman.com/downloads/) and import the collection that is located in the root of the project, as `modeling_assistant_recommender.postman_collection.json`
 
+You can also use the following cURL commands to start exploring the features of the recommender:
+```
+curl --location 'http://localhost:8080/relations/' \
+--header 'Content-Type: application/json' \
+--data '{
+    "name": "User",
+    "classNames": ["Cart", "Order", "Invoice"],
+    "linkedClasses": ["Cart"],
+    "attributes": ["phone", "email"],
+    "filterOptions":{
+        "scoreThreshold": 0,
+        "maxElements": 10
+    }
+}'
+```
 
-
-
+```
+curl --location 'http://localhost:8080/attributes/' \
+--header 'Content-Type: application/json' \
+--data '{
+    "name": "User",
+    "classNames": ["Cart", "Order", "Invoice"],
+    "attributes": ["phone", "email"],
+    "filterOptions":{
+        "scoreThreshold": 0,
+        "maxElements": 10
+    }
+}'
+```
 
 ## Literature
 The behaviour of the system, its rationale, and more details about the individual 
